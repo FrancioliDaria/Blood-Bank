@@ -1,0 +1,35 @@
+REGISTER POSTMAN - POST - http://localhost:8081/user/register?email=franciolidaria@gmail.com&firstName=Daria&lastName=Francioli&address=Baia Mare&bloodType=A&password=123&repeatPassword=123
+
+LOGIN POSTMAN - GET - http://localhost:8081/user/login?email=franciolidaria@gmail.com&password=123
+
+ADD DOCTOR - POST - http://localhost:8081/doctors
+
+ADD APPOINMENT - POST - http://localhost:8081/appointment/add?doctorId=1&userId=4&data=1988-09-29&time=12:00
+
+DELETE DOCTOR - DELETE - http://localhost:8081/doctor/delete?id=1
+
+
+
+INSERT INTO `location` (`id`, `address`) VALUES
+('1','Chiuzbaia'),
+('2','Baia-Mare'),
+('3','Busag'),
+('4','Cicarlau'),
+('5','Firiza'),
+('6','Mirau'),
+('7','Dej'),
+('8','Falticeni'),
+('9','Pui')
+
+INSERT INTO `user` (id, `email`, `password`, role) VALUES
+(3, 'admin@gmail.com','admin',0)
+
+INSERT INTO `user` (id, `email`, `password`, role) VALUES
+(4, 'mariabuzas@gmail.com','maria',1)
+
+INSERT INTO `doctor` (id,firstName, lastName, Location_Id, program, User_Id) VALUES
+(1,'Maria', 'Buzas','1',1,4)
+
+
+
+
