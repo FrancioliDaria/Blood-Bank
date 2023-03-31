@@ -26,7 +26,7 @@ public class DoctorService {
     }
 
     public Boolean add(String firstName, String lastName, Integer locationId, Integer program, Integer userId){
-        if(program!=0 || program != 1) //daca program e 0 e pe dimineata, 1 e pe seara pentru interfata
+        if(program!=0 && program != 1) //daca program e 0 e pe dimineata, 1 e pe seara pentru interfata
             return false;
         Doctor doctor = new Doctor(0, firstName, lastName, locationId, program, userId);
         doctorRepository.save(doctor);
