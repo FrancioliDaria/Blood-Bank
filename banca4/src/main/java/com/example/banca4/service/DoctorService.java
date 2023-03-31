@@ -34,7 +34,7 @@ public class DoctorService {
     }
 
     public Boolean edit(Integer id, String firstName, String lastName, Integer locationId, Integer program, Integer userId){
-        if(program!=0 || program != 1)
+        if(program!=0 && program != 1)
             return false;
         Optional<Doctor> optional = doctorRepository.findById(id);
         if(optional.isEmpty())
