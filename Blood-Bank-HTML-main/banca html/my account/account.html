@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>My Account</title>
+    <link rel="stylesheet" href="./style.css">
+	<script src="./userscript.js"></script>
+  </head>
+  <body>
+	<style>
+		body {
+			font-family: 'Poppins',sans-serif;
+			margin: 0;
+			padding: 0;
+            background-color: #f74545;
+            position: center;
+		}
+		.container {
+			width: 600px;
+			margin: 0 auto;
+			padding: 20px;
+			border: 1px solid #ccc;
+			border-radius: 5px;
+            background-color: #ffffff;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+		}
+		h1 {
+			text-align: center;
+			margin-bottom: 20px;
+		}
+		form {
+            position: center;
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: space-between;
+			align-items: center;
+			margin-bottom: 20px;
+		}
+		label {
+			width: 45%;
+			margin-bottom: 10px;
+			font-size: 1.1rem;
+            position: relative;
+		}
+		input[type="text"], select {
+			width: 50%;
+			padding: 8px;
+			border: 1px solid #ccc;
+			border-radius: 5px;
+			font-size: 1rem;
+		}
+        #blood-type {
+			width: 53%;
+		}
+		.appointments-container {
+			margin-top: 20px;
+		}
+	
+		.appointments-container h1 {
+			margin-bottom: 10px;
+		}
+	
+		.appointments-container table {
+			width: 100%;
+			border-collapse: collapse;
+			margin-bottom: 10px;
+		}
+	
+		.appointments-container th,
+		.appointments-container td {
+			padding: 8px;
+			border: 1px solid #ccc;
+			font-size: 1rem;
+		}
+	
+		li {
+			margin-bottom: 10px;
+			font-size: 1.1rem;
+		}
+		button {
+			padding: 10px;
+			border-radius: 5px;
+			border: none;
+			color: #fff;
+			background-color: #007bff;
+			cursor: pointer;
+			font-size: 1.1rem;
+		}
+		.delete-button {
+			background-color: #dc3545;
+			margin-left: 10px;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<!-- <h1>My Account</h1>
+		<div id="user-info">
+		  <p><strong>First Name:</strong> <span id="firstName"></span></p>
+		  <p><strong>Last Name:</strong> <span id="lastName"></span></p>
+		  <p><strong>Email:</strong> <span id="email"></span></p>
+		  <p><strong>Blood Type:</strong> <span id="bloodType"></span></p>
+		</div> -->
+		<div class="appointments-container">
+			<h2>My Appointments:</h2>
+			<table id="appointments-table">
+				<thead>
+					<tr>
+						<th>Date</th>
+						<th>Time</th>
+					</tr>
+				</thead>
+				<tbody id="appointments-body"></tbody>
+			</table>
+		</div>
+
+		<a href="edit.html"><button>Edit Account</button></a>
+          
+        <a href="file:///D:/Pt%20Facultate/AN%203%20SEM%202/LABS/PS/banca%20html/homepage/dist/index.html"><button class="delete-button">Delete Account</button></a>
+	</div>
+
+
+	<div id="pagination-container">
+        <button id="previous-page-btn">Previous</button>
+        <span id="current-page">1</span>
+        <button id="next-page-btn">Next</button>
+      </div>
+    </div>
+	  
+</body>
+
+</html>

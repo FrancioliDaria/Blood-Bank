@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Doctor List</title>
+    <style>
+      body {
+        background-image: url('background.jpg');
+        background-size: cover;
+        background-position: 80% 10%;
+        font-family: 'Poppins',sans-serif;
+      }
+
+      table {
+        font-family: 'Poppins',sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+        background-color: #f5f5f5;
+      }
+      th, td {
+        font-family: 'Poppins',sans-serif;
+        text-align: left;
+        padding: 8px;
+        border-bottom: 1px solid #ddd;
+      }
+      tr:hover {
+        font-family: 'Poppins',sans-serif;
+        background-color: #f5f5f5;
+      }
+      .add-btn {
+        font-family: 'Poppins',sans-serif;
+        margin-bottom: 16px;
+      }
+      form input[type="text"], form select {
+        display: block;
+        margin-bottom: 8px;
+        width: 100%;
+        padding: 8px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        box-sizing: border-box;
+        font-family: 'Poppins',sans-serif;
+      }
+      .saveBtn, form button {
+        font-family: 'Poppins',sans-serif;
+        margin-top: 8px;
+        padding: 8px;
+        background-color: #4CAF50;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+      form button {
+        font-family: 'Poppins',sans-serif;
+        margin-left: 8px;
+        background-color: #f44336;
+      }
+    </style>
+    <script src="../dist/script.js"></script>
+  </head>
+  <body>
+    
+    <h1>Doctor List</h1>
+    <table>
+      <thead>
+        <tr>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Locations</th>
+          <th>Email</th>
+          <th>Password</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody id = "doctorList">
+      </tbody>
+    </table>
+    <button class="add-btn">Add Doctor</button>
+    <form class="form-save" style="display: none;">
+      <input type="text" placeholder="First Name" class = 'input-edit-doctor'/>
+      <input type="text" placeholder="Last Name"  class = 'input-edit-doctor'/>
+      <input type="text" placeholder="Locations"  class = 'input-edit-doctor'/>
+      <input type="text" placeholder="Email" class = 'input-edit-doctor'/>
+      <input type="text" placeholder="Password"  class = 'input-edit-doctor'/>
+      <button class="saveBtn" onclick="onAddDoctorBtnClicked()">Save</button>
+      <button class="cancel-btn-save">Cancel</button>
+      <input type="hidden" name="edit-row" />
+    </form>
+    <form class="form-update" style="display: none;">
+      <input type="text" placeholder="First Name" class = 'input-edit-doctor'/>
+      <input type="text" placeholder="Last Name"  class = 'input-edit-doctor'/>
+      <input type="text" placeholder="Locations"  class = 'input-edit-doctor'/>
+      <input type="text" placeholder="Email" class = 'input-edit-doctor'/>
+      <input type="text" placeholder="Password"  class = 'input-edit-doctor'/>
+      <button class="saveBtn">Save</button>
+      <button class="cancel-btn-update">Cancel</button>
+      <input type="hidden" name="edit-row" />
+    </form>
+    <script>
+      const addBtn = document.querySelector('.add-btn');
+      const formSave = document.querySelector('.form-save');
+      const cancelBtnSave = formSave.querySelector('.cancel-btn-save');
+
+      const table = document.querySelector('table');
+      
+      addBtn.addEventListener('click', () => {
+        formSave.reset();
+        formSave.style.display = 'block';
+        addBtn.style.display = 'none';
+      });
+      
+      cancelBtnSave.addEventListener('click', () => {
+        formSave.style.display = 'none';
+        addBtn.style.display = 'block';
+      });
+
+      const formUpdate = document.querySelector('.form-update');
+
+      const cancelBtnUpdate = formUpdate.querySelector('.cancel-btn-update');
+
+      formUpdate.addEventListener('submit', (event) => {
+        event.preventDefault();
+        const firstNameInput = formUpdate.querySelector('input[type="text"][placeholder="First Name"]');
+        const lastNameInput = formUpdate.querySelector('input[type="text"][placeholder="Last Name"]');
+        const locationsInput = formUpdate.querySelector('input[type="text"][placeholder="Locations"]');
+        const emailInput = formUpdate.querySelector('input[type="text"][placeholder="Email"]');
+        const passwordInput = formUpdate.querySelector('input[type="text"][placeholder="Password"]');
+        const editRowInput = formUpdate.querySelector('input[name="edit-row"]');
+        const rowIndex = editRowInput.value;
+        const row = rowIndex ? table.rows[rowIndex] : null;
+        updateDoctor(firstNameInput.value, lastNameInput.value, locationsInput.value, emailInput.value, passwordInput.value, firstNameInput.id);
+        if (row) {
+          row.cells[0].textContent = firstNameInput.value;
+          row.cells[1].textContent = lastNameInput.value;
+          row.cells[2].textContent = locationsInput.value;
+          row.cells[3].textContent = emailInput.value;
+          row.cells[4].textContent = passwordInput.value;
+        } else {
+          const newRow = table.insertRow();
+          const firstNameCell = newRow.insertCell();
+          const lastNameCell = newRow.insertCell();
+          const locationsCell = newRow.insertCell();
+          const emailCell = newRow.insertCell();
+          const passwordCell = newRow.insertCell();
+          const actionCell = newRow.insertCell();
+          firstNameCell.textContent = firstNameInput.value;
+          lastNameCell.textContent = lastNameInput.value;
+          locationsCell.textContent = locationsInput.value;
+          emailCell.textContent = emailInput.value;
+          passwordCell.textContent = passwordInput.value;
+          actionCell.innerHTML = '<button class="edit-btn">Edit</button><button class="delete-btn">Delete</button>';
+        }
+        formUpdate.style.display = 'none';
+        addBtn.style.display = 'block';
+      });
+
+    </script>
+  </body>
+</html>
+
